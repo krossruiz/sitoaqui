@@ -12,19 +12,60 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
             background: #000;
             color: #00ff00;
             font-family: monospace;
-            min-height: 100vh;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #app {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
         }
 
         h1 {
             text-align: center;
-            padding: 1rem;
+            padding: 0.75rem;
             font-size: 1.5rem;
             color: #00ff00;
             border-bottom: 1px solid #003300;
+            flex-shrink: 0;
+        }
+
+        .video-section {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .tile-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            display: grid;
+        }
+
+        .tile-grid video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        video-player {
+            display: block;
+            position: relative;
+            z-index: 1;
         }
 
         .marquee-container {
@@ -33,6 +74,7 @@
             background: #000;
             border-top: 1px solid #003300;
             padding: 0.75rem 0;
+            flex-shrink: 0;
         }
 
         .marquee-track {
@@ -54,30 +96,61 @@
         }
 
         @keyframes scroll-left {
-            0% {
-                transform: translateX(0);
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===== LANDSCAPE ===== */
+        @media screen and (orientation: landscape) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 0.5rem;
             }
-            100% {
-                transform: translateX(-50%);
+
+            .tile-grid {
+                grid-template-columns: repeat(10, 1fr);
+                grid-template-rows: 1fr;
+            }
+
+            video-player {
+                max-width: 900px;
+            }
+
+            video-minimal-skin {
+                width: 70vw;
+                padding: 20px;
+            }
+
+            .marquee-track span {
+                font-size: 1.1rem;
             }
         }
 
-        video-player {
-            display: block;
-            max-width: 900px;
-            margin: 1rem auto;
-        }
+        /* ===== PORTRAIT ===== */
+        @media screen and (orientation: portrait) {
+            h1 {
+                font-size: 1.2rem;
+                padding: 0.75rem;
+            }
 
-        html, body {
-            overflow: hidden;
-        }
+            .tile-grid {
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: 1fr 1fr;
+            }
 
-        #app {
-            width: var(--app-w);
-            height: var(--app-h);
-            transform-origin: top left;
-            display: flex;
-            flex-direction: column;
+            video-player {
+                max-width: 100%;
+            }
+
+            video-minimal-skin {
+                width: 95vw;
+                padding: 10px;
+            }
+
+            .marquee-track span {
+                font-size: 0.9rem;
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
@@ -86,21 +159,21 @@
 
 <h1>spring-equinox-dancing-3-21-2026</h1>
 
-<div style="position: relative; flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; display: grid; grid-template-columns: repeat(10, 1fr);">
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
-        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+<div class="video-section">
+    <div class="tile-grid">
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
+        <video autoplay loop muted playsinline src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Screen%20Recording%202025-08-28%20005917.mp4"></video>
     </div>
-    <video-player style="position: relative; z-index: 1;">
-      <video-minimal-skin style="width: 70%; padding: 20px;">
+    <video-player>
+      <video-minimal-skin>
         <video src="https://github.com/krossruiz/sitoaqui/raw/refs/heads/main/resources/Mar-21-2026-1-1774127014_1123641.mov" playsinline></video>
       </video-minimal-skin>
     </video-player>
@@ -122,35 +195,5 @@
 </div>
 
 </div>
-
-<script>
-    // Try native orientation lock
-    screen.orientation.lock("landscape").catch(function() {});
-
-    // Always use the longer screen dimension as width (landscape)
-    var appW = Math.max(screen.width, screen.height);
-    var appH = Math.min(screen.width, screen.height);
-
-    function applyLayout() {
-        var app = document.getElementById("app");
-        var isPortrait = window.innerHeight > window.innerWidth;
-
-        app.style.setProperty("--app-w", appW + "px");
-        app.style.setProperty("--app-h", appH + "px");
-
-        if (isPortrait) {
-            // Rotate the app 90deg and reposition so it fills the screen
-            app.style.transform = "rotate(90deg) translateY(-" + appH + "px)";
-        } else {
-            app.style.transform = "none";
-        }
-    }
-
-    applyLayout();
-    window.addEventListener("resize", applyLayout);
-    window.addEventListener("orientationchange", function() {
-        setTimeout(applyLayout, 100);
-    });
-</script>
 </body>
 </html>
