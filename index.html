@@ -67,6 +67,20 @@
             max-width: 900px;
             margin: 1rem auto;
         }
+
+        /* Force landscape on portrait mobile screens */
+        @media screen and (orientation: portrait) {
+            html {
+                transform: rotate(90deg);
+                transform-origin: top left;
+                width: 100vh;
+                height: 100vw;
+                position: absolute;
+                top: 0;
+                left: 100vw;
+                overflow-x: hidden;
+            }
+        }
     </style>
 </head>
 <body>
@@ -108,5 +122,9 @@
     </div>
 </div>
 
+<script>
+    // Try to lock orientation to landscape via the Screen Orientation API
+    screen.orientation.lock("landscape").catch(function() {});
+</script>
 </body>
 </html>
